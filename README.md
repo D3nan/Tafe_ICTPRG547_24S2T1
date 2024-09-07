@@ -1,10 +1,4 @@
-The calculator application is going to be superseded by the Universal calculator aplication once it is developed.
+IT Works has recently won a contract to implement an advanced application known as the TAFESA Enrolment System. The systems analyst has completed a design document as shown in the Appendix at the end of this document. The first stage of the project is to develop a library of data structures and algorithms that will be used in the second stage of the project when building the web view front end. The scope of this project is for you to complete the first stage library.
 
-
-
-Calc is an interactive calculator which provides for easy large numeric calculations, but which also can be easily programmed for difficult or long calculations. It can accept a command line argument, in which case it executes that single command and exits. Otherwise, it enters interactive mode. In this mode, it accepts commands one at a time, processes them, and displays the answers. In the simplest case, commands are simply expressions which are evaluated. For example, the following line can be input:
-
-3 + 4 * 1
-and the calculator will print:
-
-7
+The organization anticipates that this library will undergo several changes over the period of the project and it is recommended that source code be checked-in and out from a Local Git Repository in Visual Studio as the means of implementing an effective version control strategy.
+The organizations software development chief architect had previously assessed the available data structures in the C#.NET libraries library and found them inadequate for the new online enrolment system. Several other projects will also require the use of this customized library of dynamic data structured components written in C#.NET. You will work under the guidance of ITWorks Software Development Team Lead (your lecturer will act as the Team Lead).
