@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TAFESA_Enrolment_System
 {
-    internal class Student
+    public class Student : IComparable<Student>
     {
         /// <summary>
         /// Setting default values
@@ -126,8 +126,80 @@ namespace TAFESA_Enrolment_System
             return hash;
         }
         /// <summary>
-        /// Main method to test the Student class
+        /// Overriding IComparable interface
+        /// Compares Students by StudentId
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="other"></param>
+        /// <returns>int</returns>
+         public int CompareTo(Student other)
+        {
+            //if (other == null) return 1; // A Student is always greater than null
+            //if (ReferenceEquals(this, other)) return 0;
+
+            //// If other is not of type Student, we could return a specific value or throw an exception
+            //if (other.GetType() != this.GetType())
+            //{
+            //    throw new ArgumentException("Object is not a Student");
+            //}
+    
+            return this.StudentId.CompareTo(other.StudentId); // Compare based on StudentId
+        }
+        /// <summary>
+        /// Overriding IComparable interface. Comparing the object, then passing that object
+        /// to the other CompareTo to compare against StudentId
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(object obj)
+        {
+            if (obj == null) throw new ArgumentException("obj");
+            if (!(obj is Student)) throw new ArgumentException("Expected student");
+            return CompareTo((Student)obj); // Compare based on StudentId
+        }
+
+        /// <summary>
+        /// Override the > operator
+        /// </summary>
+        /// <param name="student1"></param>
+        /// <param name="student2"></param>
+        /// <returns>boolean</returns>
+        public static bool operator >(Student student1, Student student2)
+        {
+            return student1.CompareTo(student2) > 0;
+        }
+
+        /// <summary>
+        /// Override the < operator
+        /// </summary>
+        /// <param name="student1"></param>
+        /// <param name="student2"></param>
+        /// <returns>boolean</returns>
+        public static bool operator <(Student student1, Student student2)
+        {
+            return student1.CompareTo(student2) < 0;
+        }
+
+        /// <summary>
+        /// Override the >= operator
+        /// </summary>
+        /// <param name="student1"></param>
+        /// <param name="student2"></param>
+        /// <returns>boolean</returns>
+        public static bool operator >=(Student student1, Student student2)
+        {
+            return student1.CompareTo(student2) >= 0;
+        }
+
+        /// <summary>
+        /// Override the <= operator
+        /// </summary>
+        /// <param name="student1"></param>
+        /// <param name="student2"></param>
+        /// <returns>boolean</returns>
+        public static bool operator <=(Student student1, Student student2)
+        {
+            return student1.CompareTo(student2) <= 0;
+        }
     }
 }

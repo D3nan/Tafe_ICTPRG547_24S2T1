@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TAFESA_Enrolment_System
 {
-    internal class Address
+    public class Address
     {
         /// <summary>
         /// Setting default values. All constructors must either have all the arguments or none.
