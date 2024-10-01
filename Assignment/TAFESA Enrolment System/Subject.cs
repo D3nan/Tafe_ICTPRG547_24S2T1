@@ -40,5 +40,14 @@ namespace TAFESA_Enrolment_System
             SubjectName = subjectName;
             Cost = cost;
         }
+
+        // Overrides the ToString
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"The subject is: {SubjectName}, with code: {SubjectCode} and costs ${Cost}");
+
+            return sb.ToString();
+        }
     }
 }

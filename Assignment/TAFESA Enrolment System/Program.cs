@@ -50,7 +50,7 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine("address1.Equals(address2) (expect false): " + address1.Equals(address2));
 
             // Testing for Person Class
-            Person person1 = new Person("NO NAME PROVIDED", "N/A", 0000000000);
+            Person person1 = new Person("NO NAME PROVIDED", "N/A", "0000000000", new Address());
             Person person2 = new Person();
 
             Console.WriteLine("person1 == person2 (expect false): " + (person1 == person2));

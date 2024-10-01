@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,6 +79,15 @@ namespace TAFESA_Enrolment_System
             Suburb = suburb;
             PostCode = postcode;
             State = state;
+        }
+
+        // Overrides the ToString
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"The address is : {StreetNum} {StreetName}, {Suburb}, {PostCode}, {State}");
+
+            return sb.ToString();
         }
     }
 }
