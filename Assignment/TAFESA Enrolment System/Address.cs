@@ -85,7 +85,7 @@ namespace TAFESA_Enrolment_System
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"The address is : {StreetNum} {StreetName}, {Suburb}, {PostCode}, {State}");
+            sb.AppendLine($"Address: {StreetNum} {StreetName}, {Suburb}, {PostCode}, {State}");
 
             return sb.ToString();
         }

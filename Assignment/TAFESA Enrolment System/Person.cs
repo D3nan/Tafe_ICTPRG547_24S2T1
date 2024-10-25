@@ -14,7 +14,8 @@ namespace TAFESA_Enrolment_System
         public const string DEFAULT_NAME = "NO NAME PROVIDED";
         public const string DEFAULT_EMAIL = "N/A";
         public const string DEFAULT_PHONENUMBER = "0000000000";
-        public static readonly Address DEFAULT_ADDRESS = new Address(0, "UNKNOWN", "UNKNOWN", 0000, "UNKNOWN");
+        // public static readonly Address DEFAULT_ADDRESS = new Address(0, "UNKNOWN", "UNKNOWN", 0000, "UNKNOWN");
+        // Remove DEFAULT_ADDRESS so persons will not point to this same object
 
         /// <summary>
         /// Declaring the properties
@@ -27,14 +28,14 @@ namespace TAFESA_Enrolment_System
         /// <summary>
         /// No-arg constructor, using only default values
         /// </summary>
-        public Person() : this(DEFAULT_NAME, DEFAULT_EMAIL, DEFAULT_PHONENUMBER, DEFAULT_ADDRESS) { }
+        public Person() : this(DEFAULT_NAME, DEFAULT_EMAIL, DEFAULT_PHONENUMBER, new Address()) { }
 
         /// <summary>
         /// 2-arg constructor that takes personName and personPhoneNumber, with other properties set to default values
         /// </summary>
         /// <param name="personName"></param>
         /// <param name="personPhoneNumber"></param>
-        public Person(string personName, string personPhoneNumber) : this(personName, DEFAULT_EMAIL, personPhoneNumber, DEFAULT_ADDRESS) { }
+        public Person(string personName, string personPhoneNumber) : this(personName, DEFAULT_EMAIL, personPhoneNumber, new Address()) { }
 
         /// <summary>
         /// Main constructor for Person that initializes all properties
@@ -55,7 +56,7 @@ namespace TAFESA_Enrolment_System
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"The person's name is: {PersonName} ");
+            sb.AppendLine($"Name: {PersonName} ");
             sb.AppendLine($"Email: {PersonEmail} ");
             sb.AppendLine($"Phone number: {PersonPhoneNumber} ");
             sb.AppendLine($"{Address}");

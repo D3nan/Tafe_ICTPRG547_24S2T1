@@ -14,7 +14,8 @@ namespace TAFESA_Enrolment_System
         public static readonly DateTime DEFAULT_DATEENROLLED = DateTime.Today;
         public const string DEFAULT_GRADE = "N/A";
         public const int DEFAULT_SEMESTER = 0;
-        public static readonly Subject DEFAULT_SUBJECT = new Subject("00000", "NO SUBJECT SELECTED", 0.0);
+        // public static readonly Subject DEFAULT_SUBJECT = new Subject("00000", "NO SUBJECT SELECTED", 0.0);
+        // Removed DEFAULT_SUBJECT to prevent enrollments pointing to this same object
 
         /// <summary>
         /// Declaring the properties
@@ -27,20 +28,20 @@ namespace TAFESA_Enrolment_System
         /// <summary>
         /// No-arg constructor, using only default values
         /// </summary>
-        public Enrollment() : this(DEFAULT_DATEENROLLED, DEFAULT_GRADE, DEFAULT_SEMESTER, DEFAULT_SUBJECT) { }
+        public Enrollment() : this(DEFAULT_DATEENROLLED, DEFAULT_GRADE, DEFAULT_SEMESTER, new Subject()) { }
 
         /// <summary>
         /// 1-arg constructor that takes dateEnrolled, with other properties set to default values
         /// </summary>
         /// <param name="dateEnrolled"></param>
-        public Enrollment(DateTime dateEnrolled) : this(dateEnrolled, DEFAULT_GRADE, DEFAULT_SEMESTER, DEFAULT_SUBJECT) { }
+        public Enrollment(DateTime dateEnrolled) : this(dateEnrolled, DEFAULT_GRADE, DEFAULT_SEMESTER, new Subject()) { }
 
         /// <summary>
         /// 2-arg constructor that takes dateEnrolled and semester, with other properties set to default values
         /// </summary>
         /// <param name="dateEnrolled"></param>
         /// <param name="semester"></param>
-        public Enrollment(DateTime dateEnrolled, int semester) : this(dateEnrolled, DEFAULT_GRADE, semester, DEFAULT_SUBJECT) { }
+        public Enrollment(DateTime dateEnrolled, int semester) : this(dateEnrolled, DEFAULT_GRADE, semester, new Subject()) { }
 
         /// <summary>
         /// 3-arg constructor that takes dateEnrolled, grade, and semester, with default Subject
@@ -48,7 +49,7 @@ namespace TAFESA_Enrolment_System
         /// <param name="dateEnrolled"></param>
         /// <param name="grade"></param>
         /// <param name="semester"></param>
-        public Enrollment(DateTime dateEnrolled, string grade, int semester) : this(dateEnrolled, grade, semester, DEFAULT_SUBJECT) { }
+        public Enrollment(DateTime dateEnrolled, string grade, int semester) : this(dateEnrolled, grade, semester, new Subject()) { }
 
         /// <summary>
         /// Main constructor for Enrollment that initializes all properties, including the aggregated Subject
@@ -72,7 +73,6 @@ namespace TAFESA_Enrolment_System
             sb.AppendLine("Enrollment:");
             sb.AppendLine($"{Subject}");
             sb.AppendLine($"Enrollment is for: {DateEnrolled} during semester {Semester} with grade {Grade}");
-
             return sb.ToString();
         }
     }

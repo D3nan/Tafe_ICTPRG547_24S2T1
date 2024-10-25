@@ -12,7 +12,8 @@ namespace TAFESA_Enrolment_System
         // Default values
         public const string DEFAULT_PROG = "Not Enrolled In Any Programs";
         public static readonly DateTime DEFAULT_DATE = DateTime.Today.Date;
-        public static readonly Enrollment DEFAULT_ENROLLMENT = new Enrollment(DEFAULT_DATE);
+        // public static readonly Enrollment DEFAULT_ENROLLMENT = new Enrollment(DEFAULT_DATE);
+        // Removed DEFAULT_ENROLLMENT to avoid pointing to this same object
 
         // Properties
         public int StudentId { get; set; }
@@ -21,13 +22,13 @@ namespace TAFESA_Enrolment_System
         public Enrollment Enrollment { get; set; } // Single Enrollment object
 
         // Constructor that accepts only studentId and assigns default values for program, dateRegistered, and a default enrollment
-        public Student(int studentId) : this(studentId, DEFAULT_PROG, DEFAULT_DATE, DEFAULT_ENROLLMENT) { }
+        public Student(int studentId) : this(studentId, DEFAULT_PROG, DEFAULT_DATE, new Enrollment()) { }
 
         // Constructor that accepts studentId and program, and assigns the default dateRegistered and a default enrollment
-        public Student(int studentId, string program) : this(studentId, program, DEFAULT_DATE, DEFAULT_ENROLLMENT) { }
+        public Student(int studentId, string program) : this(studentId, program, DEFAULT_DATE, new Enrollment()) { }
 
         // Constructor that accepts studentId and dateRegistered, and assigns the default program and a default enrollment
-        public Student(int studentId, DateTime dateRegistered) : this(studentId, DEFAULT_PROG, dateRegistered, DEFAULT_ENROLLMENT) { }
+        public Student(int studentId, DateTime dateRegistered) : this(studentId, DEFAULT_PROG, dateRegistered, new Enrollment()) { }
 
         // Main constructor for Student that initializes all properties
         public Student(int studentId, string program, DateTime dateRegistered, Enrollment enrollment)
@@ -44,10 +45,7 @@ namespace TAFESA_Enrolment_System
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Student ID: {StudentId}");
-            sb.AppendLine($"Name: {PersonName}");
-            sb.AppendLine($"Email: {PersonEmail}");
-            sb.AppendLine($"Phone: {PersonPhoneNumber}");
-            sb.AppendLine($"Address: {Address}");
+            sb.AppendLine(base.ToString()); // This will include name, email, phone, and address
             sb.AppendLine($"Program: {Program}");
             sb.AppendLine($"Date Registered: {DateRegistered.ToShortDateString()}");
             sb.AppendLine($"Enrollment:");
