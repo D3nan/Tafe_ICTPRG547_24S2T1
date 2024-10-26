@@ -17,6 +17,13 @@ namespace TAFESA_Enrolment_System
         /// <returns></returns>
         public static int BinarySearchArray<T>(T[] array, T target) where T : IComparable<T>
         {
+            if (array == null)
+                throw new ArgumentNullException(nameof(array), "Array cannot be null.");
+
+            // Check if the array is empty
+            if (array.Length == 0)
+                throw new ArgumentException("Array cannot be empty.", nameof(array));
+
             int min = 0;
             int max = array.Length - 1;
             int mid;
@@ -46,6 +53,10 @@ namespace TAFESA_Enrolment_System
         /// <returns></returns>
         public static int LinearSeachArray<T>(T[] array, T target) where T:IComparable<T> //
         {
+            // Check if the array is null
+            if (array == null)
+                throw new ArgumentNullException(nameof(array), "Array cannot be null.");
+
             int i = 0;
             bool found = false;
 
